@@ -8,9 +8,9 @@ async function fetchAiApiKey() {
     }
 }
 
-function handleRequestDelay() {
+function handleRequestDelay(poemTopic) {
     new Typewriter("#poem", {
-        strings: ["Poem Generating...", "Poem Generating..."],
+        strings: [`⏳ ${poemTopic} Poem Generating...`],
         autoStart: true,
         cursor: "",
         delay: 35,
@@ -19,8 +19,7 @@ function handleRequestDelay() {
 
 async function craftPromptUrl(poemTopic) {
     const API_KEY = await fetchAiApiKey();
-    let context =
-        "You are a funny poem expert and love to write short poems. Your mission is to generate a 6-10 line poem written in basic HTML with each line seperated by a <br />. You MUST follow the user prompt. Do NOT include a title for the poem. Do NOT include a <br /> after the last line.";
+    let context = `You are a funny poem expert and love to write short poems. Your mission is to generate a 6-10 line poem written in basic HTML with each line seperated by a <br />. You MUST follow the user prompt. Include a title for the poem based on ${poemTopic} in an <h3> element. Do NOT include a <br /> after the last line.`;
     let prompt = `User Prompt: Please write a poem about ${poemTopic}.`;
     let promptUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${API_KEY}`;
     generatePoem(promptUrl);
@@ -48,7 +47,7 @@ function typePoem(poemValue) {
 async function handleSubmit(e) {
     e.preventDefault();
     let inputElement = document.getElementById("form-input");
-    handleRequestDelay();
+    handleRequestDelay(inputElement.value);
     await craftPromptUrl(inputElement.value);
     inputElement.value = "";
 }

@@ -1,1 +1,72 @@
+body {
+    background-color: #748c87;
+}
 
+h1 {
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.5;
+    text-align: center;
+    margin: 2rem 0 4.5rem 0;
+}
+
+form {
+    margin: 3rem 3rem 4.5rem 3rem;
+    display: flex;
+}
+
+form input {
+    padding: 15px;
+    width: calc(100% - 40px);
+    margin-right: 0.5rem;
+}
+
+form input:focus {
+    border-color: #748c87;
+    outline: none;
+}
+
+form button {
+    padding: 15px 20px;
+    font-weight: 600;
+}
+form button:hover {
+    color: #fcf5ee;
+    background-color: #2f4858;
+}
+
+footer {
+    max-width: 32rem;
+    margin: 0 auto;
+}
+
+footer p,
+a {
+    color: #d1d0c5;
+}
+
+.container {
+    max-width: 36rem;
+    margin: 2.5rem auto 0 auto;
+    padding: 2.5rem;
+    background-color: #fcf5ee;
+    color: #2f4858;
+    border-radius: 20px;
+    box-shadow: 0px 20px 60px rgba(65, 50, 100, 0.08);
+}
+
+.form-input-btn {
+    color: #2f4858;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fcf5ee;
+    border: 2px solid #2f4858;
+    border-radius: 20px;
+    transition: all 300ms ease-in-out;
+    font-size: 1rem;
+}
+
+#poem {
+    margin: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 2;
+}

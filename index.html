@@ -4,29 +4,32 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="./src/style.css" />
-        <title>AI Generator</title>
+        <title>AI Poem Generator</title>
     </head>
     <body>
-        <header>
-            <h1>Welcome to the AI Generator</h1>
-        </header>
-        <main>
-            <form>
-                <input
-                    type="text"
-                    placeholder="Enter the poem topic"
-                    autofocus
-                    required
-                />
-                <button type="submit">Submit</button>
-            </form>
-            <p id="poem">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Tempore ex fugit accusamus eius quaerat. Eaque neque nihil sunt
-                vero cum, debitis rem natus nobis incidunt voluptatem, aut,
-                sequi est excepturi.
-            </p>
-        </main>
+        <div class="container">
+            <header>
+                <h1>Welcome to the AI Poem Generator</h1>
+            </header>
+            <main>
+                <form>
+                    <input
+                        class="form-input-btn"
+                        type="text"
+                        placeholder="Enter the poem topic"
+                        autofocus
+                        required
+                    />
+                    <button class="form-input-btn" type="submit">Submit</button>
+                </form>
+                <p id="poem">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Tempore ex fugit accusamus eius quaerat. Eaque neque nihil
+                    sunt vero cum, debitis rem natus nobis incidunt voluptatem,
+                    aut, sequi est excepturi.
+                </p>
+            </main>
+        </div>
         <footer>
             <p>
                 <a
@@ -39,6 +42,7 @@
                 by Amy Dworsky
             </p>
         </footer>
+
         <script src="./src/index.js"></script>
     </body>
 </html>

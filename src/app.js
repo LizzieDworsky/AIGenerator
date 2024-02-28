@@ -38,12 +38,10 @@ async function fetchAiApiKey() {
  * This function enhances user experience by providing visual feedback during API operations.
  *
  * Prerequisites: Typewriter-effect library must be included for the typewriter effect.
- *
- * @param {string} poemTopic - The topic of the poem being generated.
  */
-function handleRequestDelay(poemTopic) {
+function handleRequestDelay() {
     new Typewriter("#poem", {
-        strings: [`⏳ ${poemTopic} Poem Generating...`],
+        strings: ["⏳ Poem Generating..."],
         autoStart: true,
         cursor: "",
         delay: 35,
@@ -102,6 +100,17 @@ function typePoem(poemValue) {
 }
 
 /**
+ * Updates the UI to display the user-selected poem topic.
+ * This function adds a personal touch by showing the topic the user has chosen for poem generation.
+ *
+ * @param {string} poemTopic - The topic for the poem chosen by the user.
+ */
+function addUserPrompt(poemTopic) {
+    let userPromptEl = document.getElementById("user-prompt");
+    userPromptEl.innerHTML = `Your Topic: ${poemTopic}`;
+}
+
+/**
  * Handles the poem generation form submission.
  * Displays a loading message, crafts the prompt URL, and clears the input field upon submission.
  *
@@ -112,7 +121,8 @@ function typePoem(poemValue) {
 async function handleSubmit(e) {
     e.preventDefault();
     let inputElement = document.getElementById("form-input");
-    handleRequestDelay(inputElement.value);
+    handleRequestDelay();
+    addUserPrompt(inputElement.value);
     await craftPromptUrl(inputElement.value);
     inputElement.value = "";
 }

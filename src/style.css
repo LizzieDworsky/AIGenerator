@@ -11,14 +11,14 @@ h1 {
 }
 
 form {
-    margin: 3rem 3rem 0 3rem;
+    margin: 3rem 1rem 0 1rem;
     display: flex;
+    flex-direction: column;
 }
 
 form input {
     padding: 15px;
-    width: calc(100% - 40px);
-    margin-right: 0.5rem;
+    width: calc(100% - 2rem);
 }
 
 form input:focus {
@@ -67,11 +67,12 @@ a {
     border-radius: 20px;
     transition: all 300ms ease-in-out;
     font-size: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .hint {
     font-size: 12px;
-    margin-left: 4rem;
+    margin-left: 2rem;
     opacity: 70%;
 }
 
@@ -79,4 +80,25 @@ a {
     margin: 1.5rem;
     font-size: 1.25rem;
     line-height: 2;
+}
+
+@media (min-width: 768px) {
+    form {
+        flex-direction: row;
+        margin: 3rem 3rem 0 3rem;
+    }
+    form input {
+        flex-grow: 1;
+        margin-right: 0.5rem;
+    }
+    form button {
+        flex-shrink: 0;
+    }
+    .form-input-btn {
+        width: auto;
+        margin-bottom: 0;
+    }
+    .hint {
+        margin-left: 4rem;
+    }
 }

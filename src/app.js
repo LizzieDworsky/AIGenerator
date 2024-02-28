@@ -36,15 +36,21 @@ async function fetchAiApiKey() {
 /**
  * Displays a loading message with a typewriter effect while the poem is being generated.
  * This function enhances user experience by providing visual feedback during API operations.
+ * It checks for an existing Typewriter instance and stops it to prevent overlapping effects.
  *
  * Prerequisites: Typewriter-effect library must be included for the typewriter effect.
  */
 function handleRequestDelay() {
-    new Typewriter("#poem", {
+    if (loadingTypewriter) {
+        loadingTypewriter.stop();
+    }
+
+    loadingTypewriter = new Typewriter("#poem", {
         strings: ["⏳ Poem Generating..."],
         autoStart: true,
         cursor: "",
         delay: 35,
+        loop: true,
     });
 }
 
@@ -85,12 +91,18 @@ async function generatePoem(apiUrl) {
 /**
  * Types out the generated poem with a typewriter effect.
  * This function provides an engaging way to present the generated poem to the user.
+ * It stops any existing loading message Typewriter instance before displaying the poem.
  *
  * Prerequisites: Typewriter-effect library must be included for the typewriter effect.
  *
  * @param {string} poemValue - The generated poem to display.
  */
 function typePoem(poemValue) {
+    if (loadingTypewriter) {
+        loadingTypewriter.stop();
+        loadingTypewriter.deleteAll();
+    }
+
     new Typewriter("#poem", {
         strings: poemValue,
         autoStart: true,
@@ -126,6 +138,13 @@ async function handleSubmit(e) {
     await craftPromptUrl(inputElement.value);
     inputElement.value = "";
 }
+
+/**
+ * Global variable to hold the Typewriter instance for the loading message.
+ * This allows for control over the typewriter instance across different functions,
+ * enabling stopping or altering the typewriter effect as needed.
+ */
+let loadingTypewriter;
 
 // Event listener for the poem generation form submission.
 let poemForm = document.getElementById("poem-gen-form");
